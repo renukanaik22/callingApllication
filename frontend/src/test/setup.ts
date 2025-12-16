@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 // Mock WebRTC APIs
-global.RTCPeerConnection = jest.fn().mockImplementation(() => ({
+const mockRTCPeerConnection: any = jest.fn().mockImplementation(() => ({
   createOffer: jest.fn().mockResolvedValue({}),
   createAnswer: jest.fn().mockResolvedValue({}),
   setLocalDescription: jest.fn().mockResolvedValue(undefined),
@@ -17,6 +17,11 @@ global.RTCPeerConnection = jest.fn().mockImplementation(() => ({
   connectionState: 'new',
   iceGatheringState: 'new'
 }));
+
+// Add static method
+mockRTCPeerConnection.generateCertificate = jest.fn().mockResolvedValue({});
+
+global.RTCPeerConnection = mockRTCPeerConnection;
 
 global.RTCSessionDescription = jest.fn().mockImplementation((init) => init);
 global.RTCIceCandidate = jest.fn().mockImplementation((init) => init);

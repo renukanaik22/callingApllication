@@ -25,7 +25,7 @@ describe('WebRTCService', () => {
       ])
     };
 
-    (global.RTCPeerConnection as jest.Mock).mockReturnValue(mockPeerConnection);
+    (global.RTCPeerConnection as unknown as jest.Mock).mockReturnValue(mockPeerConnection);
     (navigator.mediaDevices.getUserMedia as jest.Mock).mockResolvedValue(mockStream);
   });
 
@@ -75,7 +75,7 @@ describe('WebRTCService', () => {
 
   describe('createAnswer', () => {
     it('should create answer and set descriptions', async () => {
-      const offer = { type: 'offer', sdp: 'test-sdp' };
+      const offer = { type: 'offer' as RTCSdpType, sdp: 'test-sdp' };
       
       const answer = await service.createAnswer(mockPeerConnection, offer);
       
@@ -88,7 +88,7 @@ describe('WebRTCService', () => {
 
   describe('setRemoteAnswer', () => {
     it('should set remote description', async () => {
-      const answer = { type: 'answer', sdp: 'test-sdp' };
+      const answer = { type: 'answer' as RTCSdpType, sdp: 'test-sdp' };
       
       await service.setRemoteAnswer(mockPeerConnection, answer);
       
