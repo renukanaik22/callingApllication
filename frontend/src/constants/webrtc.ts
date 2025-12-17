@@ -1,6 +1,12 @@
 import { ICEServerConfig, MediaConstraints } from '../interfaces/webrtc';
 
-export const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:3001';
+let socketUrl = 'http://localhost:3001';
+
+export const getSocketUrl = () => socketUrl;
+
+export const setSocketUrl = (url: string) => {
+  socketUrl = url;
+};
 
 export const ICE_SERVERS: ICEServerConfig = {
   iceServers: [

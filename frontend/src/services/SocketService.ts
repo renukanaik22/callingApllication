@@ -1,13 +1,13 @@
 import { io, Socket } from 'socket.io-client';
 import { ClientToServerEvents, ServerToClientEvents } from '../interfaces/socket';
-import { SOCKET_URL } from '../constants/webrtc';
+import { getSocketUrl } from '../constants/webrtc';
 
 export class SocketService {
   private socket: Socket<ServerToClientEvents, ClientToServerEvents> | null = null;
 
   connect(): Socket<ServerToClientEvents, ClientToServerEvents> {
     if (!this.socket) {
-      this.socket = io(SOCKET_URL);
+      this.socket = io(getSocketUrl());
     }
     return this.socket;
   }
