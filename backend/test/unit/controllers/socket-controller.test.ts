@@ -4,7 +4,6 @@ import {RoomService} from "../../../src/services/RoomService";
 import {Logger} from "../../../src/utils/Logger";
 import {Room} from "../../../src/models/Room";
 
-
 describe('SocketController', () => {
   let socketController: SocketController;
   let mockRoomService: RoomService;
