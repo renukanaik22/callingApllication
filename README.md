@@ -171,7 +171,7 @@ callingApplication/
 │   │   │   ├── HomePage.css
 │   │   │   ├── VideoCallPage.jsx
 │   │   │   └── VideoCallPage.css
-│   │   ├── App.jsx
+│   │   ├── SignalingServer.jsx
 │   │   ├── main.jsx
 │   │   └── index.css
 │   ├── index.html

@@ -8,7 +8,7 @@ import { Logger } from './utils/Logger.ts';
 import { AppConfig } from './config/AppConfig.ts';
 import { ClientToServerEvents, ServerToClientEvents } from "./interfaces.ts";
 
-export class App {
+export class SignalingServer {
   private app: express.Application;
   private server: ReturnType<typeof createServer>;
   private io!: Server<ClientToServerEvents, ServerToClientEvents>;

@@ -1,6 +1,14 @@
 import { ICEServerConfig, MediaConstraints } from '../interfaces/webrtc';
 
-export const SOCKET_URL = 'http://localhost:3001';
+const getSocketUrl = (): string => {
+  // Production: Use environment variable or deployed backend
+  if (import.meta.env.PROD) {
+    return import.meta.env.VITE_SOCKET_URL || 'https://your-backend.onrender.com';
+  }
+  return 'http://localhost:3001';
+};
+
+export const SOCKET_URL = getSocketUrl();
 
 export const ICE_SERVERS: ICEServerConfig = {
   iceServers: [
