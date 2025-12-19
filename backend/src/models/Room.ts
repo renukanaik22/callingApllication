@@ -20,9 +20,4 @@ export class Room {
     return this.creator === socketId || this.joiner === socketId;
   }
 
-  getOtherParticipant(socketId: string): string | null {
-    if (this.creator === socketId) return this.joiner;
-    if (this.joiner === socketId) return this.creator;
-    return null;
-  }
 }

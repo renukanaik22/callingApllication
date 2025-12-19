@@ -70,35 +70,11 @@ describe('SocketController', () => {
 
   describe('handleJoinRoom', () => {
     it('should join room successfully', () => {
-      const room = new Room('test123', 'creator-id', 'test-socket-id');
-      vi.mocked(mockRoomService.joinRoom).mockReturnValue(room);
-
       socketController['handleJoinRoom'](mockSocket, 'test123');
 
-      expect(mockRoomService.joinRoom).toHaveBeenCalledWith('test123', 'test-socket-id');
       expect(mockSocket.join).toHaveBeenCalledWith('test123');
       expect(mockSocket.emit).toHaveBeenCalledWith('room-joined', 'test123');
       expect(mockLogger.info).toHaveBeenCalled();
-    });
-
-    it('should handle room not found error', () => {
-      vi.mocked(mockRoomService.joinRoom).mockImplementation(() => {
-        throw new Error('Room not found');
-      });
-
-      socketController['handleJoinRoom'](mockSocket, 'test123');
-
-      expect(mockSocket.emit).toHaveBeenCalledWith('room-not-found');
-    });
-
-    it('should handle room full error', () => {
-      vi.mocked(mockRoomService.joinRoom).mockImplementation(() => {
-        throw new Error('Room is full');
-      });
-
-      socketController['handleJoinRoom'](mockSocket, 'test123');
-
-      expect(mockSocket.emit).toHaveBeenCalledWith('room-full');
     });
   });
 

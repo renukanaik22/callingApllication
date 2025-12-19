@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Socket } from 'socket.io-client';
-import { ConnectionStatus } from '../interfaces/webrtc';
+import { ConnectionStatus } from '../interfaces/webrtc-types.ts';
 import { webRTCService } from '../services/WebRTCService';
 
 interface UseWebRTCCallProps {
@@ -73,7 +73,7 @@ export const useWebRTCCall = ({ socket, roomId, onError }: UseWebRTCCallProps) =
       peerConnectionRef.current = pc;
       socket?.emit('offer', { roomId, offer });
     } catch (error) {
-      onError('Failed to create offer');
+      onError(`Failed to create offer: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }, [setupPeerConnection, socket, roomId, onError]);
 
@@ -85,7 +85,7 @@ export const useWebRTCCall = ({ socket, roomId, onError }: UseWebRTCCallProps) =
       peerConnectionRef.current = pc;
       socket?.emit('answer', { roomId, answer });
     } catch (error) {
-      onError('Failed to handle offer');
+      onError(`Failed to handle offer: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }, [setupPeerConnection, socket, roomId, onError]);
 
@@ -95,7 +95,7 @@ export const useWebRTCCall = ({ socket, roomId, onError }: UseWebRTCCallProps) =
         await webRTCService.setRemoteAnswer(peerConnectionRef.current, answer);
       }
     } catch (error) {
-      onError('Failed to handle answer');
+      onError(`Failed to handle answer: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }, [onError]);
 
@@ -105,7 +105,7 @@ export const useWebRTCCall = ({ socket, roomId, onError }: UseWebRTCCallProps) =
         await webRTCService.addIceCandidate(peerConnectionRef.current, candidate);
       }
     } catch (error) {
-      onError('Failed to add ICE candidate:');
+      onError(`Failed to add ICE candidate: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }, []);
 

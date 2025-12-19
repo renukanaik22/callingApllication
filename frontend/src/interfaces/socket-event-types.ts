@@ -1,26 +1,5 @@
-// Room management types
-export interface Room {
-  creator: string;
-  joiner: string | null;
-}
+import { OfferMessage, AnswerMessage, IceCandidateMessage } from './webrtc-types.ts';
 
-// WebRTC signaling message types
-export interface OfferMessage {
-  roomId: string;
-  offer: RTCSessionDescriptionInit;
-}
-
-export interface AnswerMessage {
-  roomId: string;
-  answer: RTCSessionDescriptionInit;
-}
-
-export interface IceCandidateMessage {
-  roomId: string;
-  candidate: RTCIceCandidateInit;
-}
-
-// Socket event types
 export interface ServerToClientEvents {
   'room-created': (roomId: string) => void;
   'room-joined': (roomId: string) => void;

@@ -1,5 +1,5 @@
 import { io, Socket } from 'socket.io-client';
-import { ClientToServerEvents, ServerToClientEvents } from '../interfaces/socket';
+import { ClientToServerEvents, ServerToClientEvents } from '../interfaces/socket-event-types.ts';
 import { getSocketUrl } from '../constants/webrtc';
 
 export class SocketService {

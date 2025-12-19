@@ -1,5 +1,22 @@
-import { OfferMessage, AnswerMessage, IceCandidateMessage } from './webrtc';
 
+
+// WebRTC signaling message types
+export interface OfferMessage {
+  roomId: string;
+  offer: RTCSessionDescriptionInit;
+}
+
+export interface AnswerMessage {
+  roomId: string;
+  answer: RTCSessionDescriptionInit;
+}
+
+export interface IceCandidateMessage {
+  roomId: string;
+  candidate: RTCIceCandidateInit;
+}
+
+// Socket event types
 export interface ServerToClientEvents {
   'room-created': (roomId: string) => void;
   'room-joined': (roomId: string) => void;

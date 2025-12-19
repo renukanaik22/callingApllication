@@ -71,29 +71,5 @@ describe('Room', () => {
     });
   });
 
-  describe('getOtherParticipant', () => {
-    it('should return joiner when given creator', () => {
-      const room = new Room('test123', 'creator-id', 'joiner-id');
 
-      expect(room.getOtherParticipant('creator-id')).toBe('joiner-id');
-    });
-
-    it('should return creator when given joiner', () => {
-      const room = new Room('test123', 'creator-id', 'joiner-id');
-
-      expect(room.getOtherParticipant('joiner-id')).toBe('creator-id');
-    });
-
-    it('should return null for non-participant', () => {
-      const room = new Room('test123', 'creator-id', 'joiner-id');
-
-      expect(room.getOtherParticipant('random-id')).toBeNull();
-    });
-
-    it('should return null when no joiner exists', () => {
-      const room = new Room('test123', 'creator-id');
-
-      expect(room.getOtherParticipant('creator-id')).toBeNull();
-    });
-  });
 });

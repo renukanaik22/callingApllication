@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { MediaControls } from '../interfaces/webrtc';
+import { MediaControls } from '../interfaces/webrtc-types.ts';
 
 export const useMediaControls = (localStream: MediaStream | null): MediaControls => {
   const [isMuted, setIsMuted] = useState(false);

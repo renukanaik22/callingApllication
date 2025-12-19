@@ -41,7 +41,7 @@ describe('WebRTCService', () => {
       const error = new Error('Permission denied');
       (navigator.mediaDevices.getUserMedia as jest.Mock).mockRejectedValue(error);
 
-      await expect(service.getUserMedia()).rejects.toThrow('Failed to access camera/microphone. Please grant permissions.');
+      await expect(service.getUserMedia()).rejects.toThrow('Failed to access camera/microphone: Permission denied');
     });
   });
 

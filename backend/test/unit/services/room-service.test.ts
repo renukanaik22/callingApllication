@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { RoomService } from '../../../src/services/RoomService.ts';
-import { Room } from '../../../src/models/Room.ts';
+import { RoomService } from '../../../src/services/RoomService';
+import { Room } from '../../../src/models/Room';
 
 describe('RoomService', () => {
   let roomService: RoomService;

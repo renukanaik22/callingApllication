@@ -1,5 +1,5 @@
 import { ICE_SERVERS, MEDIA_CONSTRAINTS } from '../constants/webrtc';
-import {ICEServerConfig, MediaConstraints} from "../interfaces/webrtc.ts";
+import {ICEServerConfig, MediaConstraints} from "../interfaces/webrtc-types.ts";
 
 export class WebRTCService {
   async getUserMedia(constraints: MediaConstraints = MEDIA_CONSTRAINTS): Promise<MediaStream> {
@@ -8,7 +8,7 @@ export class WebRTCService {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       return stream;
     } catch (error) {
-      throw new Error('Failed to access camera/microphone. Please grant permissions.');
+      throw new Error(`Failed to access camera/microphone: ${error instanceof Error ? error.message : 'Please grant permissions'}`);
     }
   }
 

@@ -1,4 +1,4 @@
-import { ICEServerConfig, MediaConstraints } from '../interfaces/webrtc';
+import { ICEServerConfig, MediaConstraints } from '../interfaces/webrtc-types.ts';
 
 let socketUrl = 'http://localhost:3001';
 
