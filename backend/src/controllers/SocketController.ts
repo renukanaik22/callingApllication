@@ -6,7 +6,7 @@ import {
   OfferMessage,
   AnswerMessage,
   IceCandidateMessage
-} from '../interfaces.ts';
+} from '../types/signaling-event.types.ts';
 import { Logger } from '../utils/Logger.ts';
 
 export class SocketController {
@@ -43,7 +43,6 @@ export class SocketController {
 
   private handleJoinRoom(socket: Socket<ClientToServerEvents, ServerToClientEvents>, roomId: string): void {
     try {
-      const room = this.roomService.joinRoom(roomId, socket.id);
       socket.join(roomId);
       socket.to(roomId).emit('user-joined', socket.id);
       socket.emit('room-joined', roomId);

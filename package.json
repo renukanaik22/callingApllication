@@ -2,12 +2,19 @@
   "name": "webrtc-video-call",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["frontend", "backend"],
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
     "build:frontend": "cd frontend && npm run build",
-    "test": "cd frontend && npm test && cd ../backend && npm test"
+    "test": "cd frontend && npm test && cd ../backend && npm test",
+    "lint": "cd frontend && npm run lint && cd ../backend && npm run lint",
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }

@@ -6,7 +6,7 @@ import { SocketController } from './controllers/SocketController.ts';
 import { RoomService } from './services/RoomService.ts';
 import { Logger } from './utils/Logger.ts';
 import { AppConfig } from './config/AppConfig.ts';
-import { ClientToServerEvents, ServerToClientEvents } from "./interfaces.ts";
+import { ClientToServerEvents, ServerToClientEvents } from "./types/signaling-event.types.ts";
 
 export class SignalingServer {
   private app: express.Application;

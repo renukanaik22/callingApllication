@@ -3,24 +3,31 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/main.ts",
     "build": "tsc",
-    "start": "node dist/src/server.js",
+    "start": "node dist/src/main.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint src/**/*.ts && npm run check-unused",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "check-unused": "ts-unused-exports tsconfig.json --excludePathsFromReport=test"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "socket.io": "^4.6.1",
-    "cors": "^2.8.5"
+    "socket.io": "^4.6.1"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17",
     "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
     "@types/node": "^20.5.0",
-    "typescript": "^5.1.6",
+    "@typescript-eslint/eslint-plugin": "^8.50.0",
+    "@typescript-eslint/parser": "^8.50.0",
+    "eslint": "^9.39.2",
+    "socket.io-client": "^4.6.1",
+    "ts-unused-exports": "^11.0.1",
     "tsx": "^3.12.7",
-    "vitest": "^1.0.0",
-    "socket.io-client": "^4.6.1"
+    "typescript": "^5.1.6",
+    "vitest": "^1.0.0"
   }
 }
